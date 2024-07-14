@@ -1,6 +1,15 @@
 import React from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log({ data: window?.Telegram?.WebApp?.initDataUnsafe });
+    console.log({ data2: window?.Telegram?.WebApp });
+  }, []);
+  console.log({ location });
   return (
     <div className="text-2xl p-[1rem] flex flex-col min-h-[100vh]">
       <div className="flex flex-col items-center text-center gap-[1rem] justify-center flex-1">
