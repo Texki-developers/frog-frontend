@@ -8,6 +8,7 @@ export default function Home() {
   useEffect(() => {
     console.log({ data: window?.Telegram?.WebApp?.initDataUnsafe });
     console.log({ data2: window?.Telegram?.WebApp });
+    console.log({ data2: window?.Telegram });
   }, []);
   console.log({ location });
   return (
