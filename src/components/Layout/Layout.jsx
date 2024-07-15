@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import BottomNav from "../Navbar/BottomNav";
 
-const PATH_WITH_NAV = ["/dashboard", "/dashboard/"];
+const PATH_WITH_NAV = ["/dashboard", "/dashboard/", "/invite", "/invite/"];
 
 export default function Layout() {
   const { pathname } = useLocation();

@@ -10,12 +10,12 @@ export const navData = [
   },
   {
     title: "Leaderboard",
-    path: "/dashboard",
+    path: "/leaderboard",
     icon: <GoTrophy className="text-[1.2rem]" />,
   },
   {
     title: "Friends",
-    path: "/dashboard",
+    path: "/invite",
     icon: <MdOutlineGroup className="text-[1.2rem]" />,
   },
 ];

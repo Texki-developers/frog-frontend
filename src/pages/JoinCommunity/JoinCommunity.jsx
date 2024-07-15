@@ -10,7 +10,7 @@ export default function JoinCommunity() {
       </div>
       <div>
         <img src={frog} className="w-[10rem]" />
-        <h2 className="text-[2rem] font-[600]">1000 Frogs</h2>
+        <h2 className="text-[1.8rem] font-[600]">1000 Frogs</h2>
       </div>
       <div
         className="w-[100%] rounded-[20px] flex flex-col items-center justify-center p-[1rem] gap-[0.5rem]"
