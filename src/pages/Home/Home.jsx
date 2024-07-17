@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const location = useLocation();
+const navigate = useNavigate()
 
   useEffect(() => {
     console.log({ data: window?.Telegram?.WebApp?.initDataUnsafe });
@@ -19,7 +20,7 @@ export default function Home() {
           You've been in Telegram for a while, it's time to get rewarded
         </p>
       </div>
-      <button className="btn-common btn-solid">Wow, Let's go</button>
+      <button onClick={()=>{navigate('/checking')}} className="btn-common btn-solid">Wow, Let's go</button>
     </div>
   );
 }
