@@ -23,7 +23,7 @@ export default function JoinCommunity() {
         <p className="text-[0.7rem] text-grey-300 text-center">
           Home for Telegram OGs
         </p>
-        <button className="text-white bg-black btn-common">
+        <button onClick={()=>window.open('https://t.me/dogs_community')} className="text-white bg-black btn-common">
           Join for +100 Frogs
         </button>
       </div>

@@ -2,8 +2,8 @@ import React from "react";
 import frog from "../../assets/images/frog.png";
 
 export default function InvitePage() {
-  const url = "https://example.com"; // Replace with your URL
-  const text = "Join me on this awesome platform!"; // Replace with your text
+  const url = "t.me/giraffe_testbot/giraffe"; // Replace with your URL
+  const text = "Invite your Friends to get APES coin"; // Replace with your text
 
   return (
     <div className="text-2xl p-[1rem] flex flex-col min-h-[100vh] text-center justify-between items-center pb-[5rem]">
