@@ -1,7 +1,9 @@
 import React from "react";
 import CheckingValidation from "../../components/checkingValidation/CheckingValidation";
+import { useNavigate } from "react-router";
 
 export default function Checking() {
+  const navigation = useNavigate()
   return (
     <div className="text-2xl p-[1rem] flex flex-col min-h-[100vh]">
       <div className="flex flex-col items-center text-center gap-[3rem] justify-center flex-1">
@@ -31,7 +33,7 @@ export default function Checking() {
           />
         </div>
       </div>
-      <button className="btn-common btn-solid">Continue</button>
+      <button onClick={()=> navigation('/dashboard')}  className="btn-common btn-solid">Continue</button>
     </div>
   );
 }
