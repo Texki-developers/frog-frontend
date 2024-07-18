@@ -33,7 +33,7 @@ export default function Checking() {
           />
         </div>
       </div>
-      <button onClick={()=> navigation('/dashboard')}  className="btn-common btn-solid">Continue</button>
+      <button onClick={()=> navigation('/rising-star')}  className="btn-common btn-solid">Continue</button>
     </div>
   );
 }

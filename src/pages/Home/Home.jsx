@@ -7,6 +7,7 @@ export default function Home() {
 const navigate = useNavigate()
 
   useEffect(() => {
+    console.log({ data: window?.Telegram?.WebApp?.initDataUnsafe?.user?.id },"user data");
     console.log({ data: window?.Telegram?.WebApp?.initDataUnsafe });
     console.log({ data2: window?.Telegram?.WebApp });
     console.log({ data2: window?.Telegram });
