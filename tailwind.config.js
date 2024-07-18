@@ -36,6 +36,22 @@ module.exports = {
           600: "#55555e",
         },
       },
+      keyframes: {
+        expandWidth: {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
+      },
+      animation: {
+        expandWidth: "expandWidth 2s ease-in-out",
+      },
+      anitmationDelay: {
+        0: "0ms",
+        250: "250ms",
+        500: "500ms",
+        750: "750ms",
+        1000: "1000ms",
+      },
     },
   },
   plugins: [],

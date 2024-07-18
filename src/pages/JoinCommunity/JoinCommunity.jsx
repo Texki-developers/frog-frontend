@@ -23,13 +23,9 @@ const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
 
 useEffect(() => {
   let point = 0;
-
-  // Check if invite and invite.data exist before accessing further nested properties
   if (invite && invite.data && invite.data.friends) {
     invite.data.friends.forEach(item => {
-      // Assuming `item.user.point` is an object with a `point` property
       point += item.user.pointGain;
-      console.log(item.pointGain, "point");
     });
   }
 
@@ -40,7 +36,7 @@ console.log(data)
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
       <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
-      🦧 Get more Apes soon with nomis
+        🦧 Get more Apes soon with nomis
       </div>
       <div>
         <img src={frog} className="w-[15rem]" />
@@ -57,7 +53,10 @@ console.log(data)
         <p className="text-[0.7rem] text-grey-300 text-center">
           Home for Telegram OGs
         </p>
-        <button onClick={()=>window.open('https://t.me/dogs_community')} className="text-white bg-black btn-common">
+        <button
+          onClick={() => window.open("https://t.me/dogs_community")}
+          className="text-white bg-black btn-common"
+        >
           Join for +500 APES
         </button>
       </div>
@@ -78,7 +77,7 @@ console.log(data)
       </div>
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
         <div className="p-[1rem] bg-grey-50 rounded-[50%]">
-        <MdOutlineGroup className="text-[1.2rem]"/>
+          <MdOutlineGroup className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Invited Friends</p>
         <p className="text-basic">+{invitePoint} Apes</p>
