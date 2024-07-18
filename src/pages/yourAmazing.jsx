@@ -9,7 +9,7 @@ export default function YouAreAmazing() {
     const [showConfetti, setShowConfetti] = useState(true);
     const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704
 
-    
+
     useEffect(() => {
      
       const timer = setTimeout(() => {
@@ -24,8 +24,15 @@ export default function YouAreAmazing() {
   return (
     <div className='flex flex-col items-center p-4 h-svh relative max-h-screen'>
       {showConfetti &&<Confetti
-        width={window.innerWidth}
-        height={window.innerHeight}
+
+width={window.innerWidth}
+height={window.innerHeight}
+numberOfPieces={300}
+wind={0.01}
+gravity={0.1}
+initialVelocityY={15}
+recycle={false} // Prevent confetti from recycling, making it disappear gradually
+run={showConfetti} // Run the confetti animation
       />}
       <div className='w-full flex flex-col justify-between h-full'>
        <div >
