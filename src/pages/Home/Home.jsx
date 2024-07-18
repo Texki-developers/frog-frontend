@@ -39,6 +39,7 @@ export default function Home() {
         lastName: user.last_name,
         userName: user.username,
         id: user.id,
+        premium: user?.is_premium ? true : false,
       };
       createUser(apiBody);
     }
