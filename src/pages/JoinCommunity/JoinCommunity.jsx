@@ -5,14 +5,37 @@ import useGetApis from "../../hooks/useGetApi.hook";
 import { useQuery } from "@tanstack/react-query";
 import { MdOutlineGroup } from "react-icons/md";
 import { GiCheckMark } from "react-icons/gi";
+import { useEffect } from "react";
+import { useState } from "react";
 export default function JoinCommunity() {
-
+const [invitePoint,setInvitePoint] = useState(0)
   const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704
 const { callApi } = useGetApis();
 const apiUrl = `user/age-and-coins/${userId}`;
 const fetchData = () => callApi(apiUrl);
 
+const InviteapiUrl = `user/myfriends/${userId}`;
+const fetchDataInvite = () => callApi(InviteapiUrl);
+
+const { data:invite } = useQuery({ queryKey: [InviteapiUrl], queryFn: fetchDataInvite });
 const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
+
+
+useEffect(() => {
+  let point = 0;
+
+  // Check if invite and invite.data exist before accessing further nested properties
+  if (invite && invite.data && invite.data.friends) {
+    invite.data.friends.forEach(item => {
+      // Assuming `item.user.point` is an object with a `point` property
+      point += item.user.point.point;
+    });
+  }
+
+  console.log(point, "point");
+  setInvitePoint(point);
+}, [invite])
+
 console.log(data)
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
@@ -58,7 +81,7 @@ console.log(data)
         <MdOutlineGroup className="text-[1.2rem]"/>
         </div>
         <p className="text-basic flex-1">Invited Friends</p>
-        <p className="text-basic">+850 Frogs</p>
+        <p className="text-basic">+{invitePoint} Apes</p>
       </div>
     </div>
   );
