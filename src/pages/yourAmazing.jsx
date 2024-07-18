@@ -26,7 +26,6 @@ export default function YouAreAmazing() {
     return () => clearTimeout(timer);
   }, []);
 
-
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center p-4 h-svh relative max-h-screen">
@@ -50,7 +49,7 @@ export default function YouAreAmazing() {
           </div>
           <div className="flex flex-col items-center mt-8">
             <h2 className="text-2xl font-semibold">You are amazing!</h2>
-            <p className="text-gray-500">Here is your Monkeys reward</p>
+            <p className="text-gray-500">Here is your Apes reward</p>
             <div className="relative mt-8">
               <img src={ape} alt="Cat" className="w-[17rem]" />
             </div>
