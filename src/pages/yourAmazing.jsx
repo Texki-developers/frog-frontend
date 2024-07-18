@@ -4,22 +4,6 @@ import ape from "../assets/images/ape.jpg";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-<<<<<<< HEAD
-
-export default function YouAreAmazing() {
-  const [showConfetti, setShowConfetti] = useState(true);
-  const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 885866704;
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowConfetti(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-  
-=======
 import useGetApis from "../hooks/useGetApi.hook";
 import { useQuery } from "@tanstack/react-query";
 
@@ -43,7 +27,6 @@ export default function YouAreAmazing() {
 
   console.log(data,'this is data');
 
->>>>>>> a0ecaf84720748eb1de04267f4f2c717ea96c8de
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center p-4 h-svh relative max-h-screen">
