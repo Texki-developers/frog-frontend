@@ -10,7 +10,8 @@ import { useQuery } from "@tanstack/react-query";
 export default function YouAreAmazing() {
   const [showConfetti, setShowConfetti] = useState(true);
 
-  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id;
+  const userId =
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1287479184;
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);
@@ -25,7 +26,6 @@ export default function YouAreAmazing() {
     return () => clearTimeout(timer);
   }, []);
 
-  console.log(data,'this is data');
 
   const navigate = useNavigate();
   return (
@@ -54,14 +54,19 @@ export default function YouAreAmazing() {
             <div className="relative mt-8">
               <img src={ape} alt="Cat" className="w-[17rem]" />
             </div>
-            <div className="text-6xl font-bold mt-4">818 APES</div>
+            <div className="text-6xl font-bold mt-4">
+              {data?.data?.points} APES
+            </div>
             <p className="text-gray-500 mt-4">
               Thanks for your time on Telegram 🤝
             </p>
           </div>
         </div>
         <button
-          onClick={() => navigate("/dashboard")}
+          onClick={() => {
+            localStorage.setItem("location", "amazing");
+            navigate("/dashboard");
+          }}
           className="btn-common btn-solid w-full"
         >
           Continue

@@ -24,7 +24,10 @@ export default function Checking() {
         </div>
       </div>
       <button
-        onClick={() => navigation("/rising-star")}
+        onClick={() => {
+          localStorage.setItem("location", "checking");
+          navigation("/rising-star");
+        }}
         className="btn-common btn-solid"
       >
         Continue
