@@ -1,8 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import {AuthApiService} from '../services/api-services'
 
 export default function RisingStar() {
     const navigate= useNavigate()
+
+    const createUser = async ()=>{
+      await AuthApiService.postApi<any, any>('user/init', apiBody);
+    }
   return (
     <div className='flex flex-col items-center p-4 h-svh w-full'>
         <div className='w-full h-full flex flex-col gap-16'>

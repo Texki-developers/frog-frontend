@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router';
 
 export default function YouAreAmazing() {
     const [showConfetti, setShowConfetti] = useState(true);
+    const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704
 
+    
     useEffect(() => {
      
       const timer = setTimeout(() => {
@@ -38,14 +40,14 @@ export default function YouAreAmazing() {
           <h2 className='text-2xl font-semibold'>You are amazing!</h2>
           <p className='text-gray-500'>Here is your CATS reward</p>
           <div className='relative mt-8'>
-            <img src={ape} alt='Cat' className='w-full'/>
+            <img src={ape} alt='Cat' className='w-[17rem]'/>
           </div>
           <div className='text-6xl font-bold mt-4'>818 APES</div>
           <p className='text-gray-500 mt-4'>Thanks for your time on Telegram 🤝</p>
          
         </div>
                </div>
-        <button onClick={()=>navigate('/')}  className='btn-common btn-solid w-full'>Continue</button>
+        <button onClick={()=>navigate('/dashboard')}  className='btn-common btn-solid w-full'>Continue</button>
       </div>
      
     </div>
