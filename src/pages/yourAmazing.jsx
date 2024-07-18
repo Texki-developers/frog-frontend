@@ -50,7 +50,7 @@ export default function YouAreAmazing() {
           </div>
           <div className="flex flex-col items-center mt-8">
             <h2 className="text-2xl font-semibold">You are amazing!</h2>
-            <p className="text-gray-500">Here is your Monkeys reward</p>
+            <p className="text-gray-500">Here is your APES reward</p>
             <div className="relative mt-8">
               <img src={ape} alt="Cat" className="w-[17rem]" />
             </div>
