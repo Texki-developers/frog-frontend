@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import {AuthApiService} from '../services/api-services'
+import AuthApiService from '../services/api-services'
 
 export default function RisingStar() {
     const navigate= useNavigate()
