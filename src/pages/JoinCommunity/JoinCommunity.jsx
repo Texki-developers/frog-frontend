@@ -5,15 +5,34 @@ import useGetApis from "../../hooks/useGetApi.hook";
 import { useQuery } from "@tanstack/react-query";
 import { MdOutlineGroup } from "react-icons/md";
 import { GiCheckMark } from "react-icons/gi";
+import { useEffect } from "react";
+import { useState } from "react";
 export default function JoinCommunity() {
-  const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 885866704;
-  const { callApi } = useGetApis();
-  const apiUrl = `user/age-and-coins/${userId}`;
-  const fetchData = () => callApi(apiUrl);
+const [invitePoint,setInvitePoint] = useState(0)
+  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704
+const { callApi } = useGetApis();
+const apiUrl = `user/age-and-coins/${userId}`;
+const fetchData = () => callApi(apiUrl);
 
-  const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
-  console.log(data);
+const InviteapiUrl = `user/myfriends/${userId}`;
+const fetchDataInvite = () => callApi(InviteapiUrl);
+
+const { data:invite } = useQuery({ queryKey: [InviteapiUrl], queryFn: fetchDataInvite });
+const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
+
+
+useEffect(() => {
+  let point = 0;
+  if (invite && invite.data && invite.data.friends) {
+    invite.data.friends.forEach(item => {
+      point += item.user.pointGain;
+    });
+  }
+
+  setInvitePoint(point);
+}, [invite])
+
+console.log(data)
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
       <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
@@ -61,7 +80,7 @@ export default function JoinCommunity() {
           <MdOutlineGroup className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Invited Friends</p>
-        <p className="text-basic">+850 Frogs</p>
+        <p className="text-basic">+{invitePoint} Apes</p>
       </div>
     </div>
   );

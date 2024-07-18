@@ -22,14 +22,12 @@ const tailwindColors = [
   'bg-pink-400',
   // Add more colors as needed
 ];
-
   return (
     <div className="text-2xl p-[1rem] flex flex-col min-h-[100vh] text-center justify-between items-center pb-[5rem]">
       <h3 className="text-[1.7rem] leading-[40px] font-[600]">
         Invite Friends <br /> and get more APES
       </h3>
       <img src={frog} className="w-[15rem]" alt="Frog" />
-
       {data && data?.data?.friends && data?.data?.friends.map((holder, index) => (
             <div key={holder.rank} className='flex items-center p-4  w-full'>
               <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tailwindColors[index % tailwindColors.length]}`}>
@@ -37,7 +35,7 @@ const tailwindColors = [
               </div>
               <div className='ml-4 flex justify-between w-full text-base'>
                 <p className='font-medium'>{holder.user.firstName}</p>
-                <p className='text-gray-500'>+{holder.user.point.point.toLocaleString()} CATS</p>
+                <p className='text-gray-500'>+{holder.user.point.point.toLocaleString()} APES</p>
               </div>
             
             </div>
