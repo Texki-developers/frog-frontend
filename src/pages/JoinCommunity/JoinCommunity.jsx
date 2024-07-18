@@ -28,11 +28,11 @@ useEffect(() => {
   if (invite && invite.data && invite.data.friends) {
     invite.data.friends.forEach(item => {
       // Assuming `item.user.point` is an object with a `point` property
-      point += item.user.point.point;
+      point += item.user.pointGain;
+      console.log(item.pointGain, "point");
     });
   }
 
-  console.log(point, "point");
   setInvitePoint(point);
 }, [invite])
 
