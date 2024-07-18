@@ -50,11 +50,7 @@ export default function YouAreAmazing() {
           </div>
           <div className="flex flex-col items-center mt-8">
             <h2 className="text-2xl font-semibold">You are amazing!</h2>
-<<<<<<< HEAD
-            <p className="text-gray-500">Here is your CATS reward</p>
-=======
             <p className="text-gray-500">Here is your Monkeys reward</p>
->>>>>>> a0ecaf84720748eb1de04267f4f2c717ea96c8de
             <div className="relative mt-8">
               <img src={ape} alt="Cat" className="w-[17rem]" />
             </div>
