@@ -40,7 +40,7 @@ console.log(data)
       </div>
       <div>
         <img src={frog} className="w-[15rem]" />
-        <h2 className="text-[1.8rem] font-[600]">{data?.data?.points} Apes</h2>
+        <h2 className="text-[1.8rem] font-[600] text-center">{data?.data?.points} Apes</h2>
       </div>
       <div
         className="w-[100%] rounded-[20px] flex flex-col items-center justify-center p-[1rem] gap-[0.5rem]"
@@ -54,7 +54,7 @@ console.log(data)
           Home for Telegram OGs
         </p>
         <button
-          onClick={() => window.open("https://t.me/dogs_community")}
+          onClick={() => window.open("https://t.me/")}
           className="text-white bg-black btn-common"
         >
           Join for +500 APES
@@ -75,13 +75,14 @@ console.log(data)
         <p className="text-basic flex-1">Telegram Premium</p>
         <p className="text-basic">{data?.data?.premium ? `+ 1000 Apes` : 0}</p>
       </div>
+      {invitePoint> 0 &&
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
         <div className="p-[1rem] bg-grey-50 rounded-[50%]">
           <MdOutlineGroup className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Invited Friends</p>
         <p className="text-basic">+{invitePoint} Apes</p>
-      </div>
+      </div>}
     </div>
   );
 }
