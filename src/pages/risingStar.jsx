@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router";
 import useGetApis from "../hooks/useGetApi.hook";
 import { useQuery } from "@tanstack/react-query";
+import bg from '../assets/images/diamond.gif'
+
 export default function RisingStar() {
   const navigate = useNavigate();
   const userId =
@@ -15,6 +17,7 @@ export default function RisingStar() {
   console.log({ data });
   return (
     <div className="flex flex-col items-center p-4 h-svh w-full">
+      
       <div className="w-full h-full flex flex-col gap-16">
         <div className="w-full ">
           <div className="flex justify-center pt-4">
@@ -78,8 +81,14 @@ export default function RisingStar() {
               ⭐
             </span>
           </div>
+      
         </div>
+   
       </div>
+
+      <div className="w-[15rem]">
+          <img src={bg} className="w-full h-full " alt="" />
+        </div>
       <button
         onClick={() => {
           localStorage.setItem("location", "rising-star");

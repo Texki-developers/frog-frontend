@@ -39,14 +39,14 @@ console.log(data)
         🦧 Get more Apes soon with nomis
       </div> */}
       <div>
-        <img src={frog} className="w-[15rem]" />
+        <img src={frog} style={{filter:'invert(1)'}} className="w-[15rem]"  />
         <h2 className="text-[1.8rem] font-[600] text-center">{data?.data?.points} Apes</h2>
       </div>
       <div
         className="w-[100%] rounded-[20px] flex flex-col items-center justify-center p-[1rem] gap-[0.5rem]"
         style={{
           background:
-            "linear-gradient(rgb(0 0 0) 0%, rgb(255 255 255 / 10%) 47%)",
+            "linear-gradient(rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0.1) 47%)",
         }}
       >
         <p className="text-basic uppercase">🦧 APES Community</p>

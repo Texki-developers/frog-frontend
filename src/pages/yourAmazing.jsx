@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import useGetApis from "../hooks/useGetApi.hook";
 import { useQuery } from "@tanstack/react-query";
+import bg from '../assets/images/star-universe.gif'
 
 export default function YouAreAmazing() {
   const [showConfetti, setShowConfetti] = useState(true);
@@ -28,7 +29,7 @@ export default function YouAreAmazing() {
 
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center p-4 h-svh relative max-h-screen ">
+    <div  className="flex flex-col items-center  h-svh relative max-h-screen ">
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
@@ -42,6 +43,10 @@ export default function YouAreAmazing() {
         />
       )}
       <div className="w-full flex flex-col justify-between h-full">
+        <div className="absolute z-[-1] w-full h-full">
+          <img src={bg} className="w-full h-full " alt="" />
+        </div>
+        
         <div className=" pb-6">
           <div className="flex justify-center  pt-4">
             <div className="w-1/2 h-1 bg-gray-200"></div>
@@ -51,7 +56,7 @@ export default function YouAreAmazing() {
             <h2 className="text-2xl font-semibold">You are amazing!</h2>
             <p className="text-gray-200">Here is your APES reward</p>
             <div className="relative mt-8">
-              <img src={ape} alt="Cat" className="w-[17rem]" />
+              <img src={ape} style={{filter:'invert(1)'}} alt="Cat" className="w-[17rem]" />
             </div>
             <div className="text-6xl font-bold mt-4">
               {data?.data?.points} APES

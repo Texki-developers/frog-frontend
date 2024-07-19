@@ -27,7 +27,7 @@ const tailwindColors = [
       <h3 className="text-[1.7rem] leading-[40px] font-[600]">
         Invite Friends <br /> and get more APES
       </h3>
-      <img src={frog} className="w-[15rem]" alt="Frog" />
+      <img src={frog} style={{filter:'invert(1)'}} className="w-[15rem]" alt="Frog" />
       {data && data?.data?.friends && data?.data?.friends.map((holder, index) => (
             <div key={holder.rank} className='flex items-center p-4  w-full'>
               <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tailwindColors[index % tailwindColors.length]}`}>
