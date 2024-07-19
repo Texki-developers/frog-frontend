@@ -14,7 +14,7 @@ export default function RisingStar() {
 
   console.log({ data });
   return (
-    <div className="flex flex-col items-center p-4 h-svh w-full">
+    <div className="flex flex-col items-center p-4 h-svh w-full dark:text-white">
       <div className="w-full h-full flex flex-col gap-16">
         <div className="w-full ">
           <div className="flex justify-center pt-4">
