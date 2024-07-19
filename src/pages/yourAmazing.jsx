@@ -28,7 +28,7 @@ export default function YouAreAmazing() {
 
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center p-4 h-svh relative max-h-screen">
+    <div className="flex flex-col items-center p-4 h-svh relative max-h-screen dark:text-white">
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
