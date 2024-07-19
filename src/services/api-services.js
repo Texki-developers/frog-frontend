@@ -1,24 +1,27 @@
-import axios from 'axios';
+import axios from "axios";
 
 class AuthApiService {
   static instance = axios.create({
     baseURL: 'https://api.apescommunity.com/',
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    withCredentials:true
+    withCredentials: true,
   });
 
   static async postApi(url, body) {
     try {
-      const response = await AuthApiService.instance.post(url, JSON.stringify(body));
+      const response = await AuthApiService.instance.post(
+        url,
+        JSON.stringify(body)
+      );
       console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);
       return {
-        message: error?.response?.data?.message ?? 'Something went wrong',
-        status: 'error',
+        message: error?.response?.data?.message ?? "Something went wrong",
+        status: "error",
       };
     }
   }
@@ -27,15 +30,15 @@ class AuthApiService {
     try {
       const response = await AuthApiService.instance.post(url, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
       return response.data;
     } catch (error) {
-      console.error('Error posting to API:', error);
+      console.error("Error posting to API:", error);
       return {
-        message: error?.response?.data?.message ?? 'Something went wrong',
-        status: 'error',
+        message: error?.response?.data?.message ?? "Something went wrong",
+        status: "error",
       };
     }
   }
@@ -45,10 +48,10 @@ class AuthApiService {
       const response = await AuthApiService.instance.get(url);
       return response.data;
     } catch (error) {
-      console.error('Error posting to API:', error.message);
+      console.error("Error posting to API:", error.message);
       return {
-        message: error?.response?.data?.message ?? 'Something went wrong',
-        status: 'error',
+        message: error?.response?.data?.message ?? "Something went wrong",
+        status: "error",
       };
     }
   }
