@@ -4,7 +4,7 @@ import useGetApis from "../../hooks/useGetApi.hook";
 
 export default function LeaderBoard() {
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 885866704;
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1287479184;
   const { callApi } = useGetApis();
   const url = `user/leadership-board`;
   const fetchData = () => callApi(url);
@@ -48,7 +48,7 @@ export default function LeaderBoard() {
                 H
               </div>
               <div className="ml-4">
-                <p className="font-medium">{myRank?.firstName}</p>
+                <p className="font-medium text-grey-300">{myRank?.firstName}</p>
                 <p className="text-gray-500">{myRank?.point?.point} APES</p>
               </div>
             </div>

@@ -51,7 +51,7 @@ export default function Home() {
   };
 
   return (
-    <div className="text-2xl p-[1rem] flex flex-col min-h-sv dark:text-white">
+    <div className="text-2xl p-[1rem] flex flex-col min-h-svh">
       <div className="flex flex-col items-center text-center gap-[1rem] justify-center flex-1">
         <h3 className="font-[600]">👋 Hey!</h3>
         <p className="text-basic text-grey-400 ">

@@ -1,6 +1,6 @@
 import React from "react";
 import Confetti from "react-confetti";
-import ape from "../assets/images/ape.jpg";
+import ape from "../assets/images/ape.png";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
@@ -28,7 +28,7 @@ export default function YouAreAmazing() {
 
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center p-4 h-svh relative max-h-screen dark:text-white">
+    <div className="flex flex-col items-center p-4 h-svh relative max-h-screen ">
       {showConfetti && (
         <Confetti
           width={window.innerWidth}

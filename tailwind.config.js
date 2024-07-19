@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  darkMode: 'media',
   content: [
     "./src/styles/*.css",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +17,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        backgroundColor: {
+          'app-black': '#000000', 
+        },
         primary: {
           50: "#b3d7ff",
           100: "#80bcff",
