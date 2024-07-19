@@ -54,7 +54,7 @@ console.log(data)
           Home for Telegram OGs
         </p>
         <button
-          onClick={() => window.open("https://t.me/")}
+          onClick={() => window.open("https://t.me/apes_community")}
           className="text-white bg-black btn-common"
         >
           Join for +500 APES
