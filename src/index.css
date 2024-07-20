@@ -14,7 +14,8 @@ html {
 }
 body {
   font-family: "Montserrat", sans-serif;
-}
+  background-color: white;
+} 
 
 @layer components {
   .btn-common {
