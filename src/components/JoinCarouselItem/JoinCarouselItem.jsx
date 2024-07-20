@@ -14,7 +14,7 @@ export default function JoinCarouselItem({
       const getApes = localStorage.getItem("apes");
       if (getApes) {
         console.log(getApes, "getaps");
-        const apiUrl = `user/telegram/1287479184`;
+        const apiUrl = `user/telegram/${userId}}`;
         try {
           const data = await AuthApiService.getApi(apiUrl);
           console.log(data, "the data");
