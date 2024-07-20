@@ -73,7 +73,7 @@ export default function JoinCommunity() {
               title="FOLLOW US ON X.COM"
               description="Stay updated with the latest news"
               link="https://x.com/theOGApes"
-              btn="Follow for 500 Apes 🦧"
+              btn="Follow"
               userId ={userId}
             />
           </SwiperSlide>
@@ -83,7 +83,7 @@ export default function JoinCommunity() {
               title="Apes Community"
               description="Home of Telegram OG's"
               link="https://t.me/theOGapes_bot"
-              btn="Join for 500 Apes 🦧"
+              btn="Join"
               userId ={userId}
             />
           </SwiperSlide>
