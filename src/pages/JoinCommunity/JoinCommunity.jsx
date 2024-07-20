@@ -46,6 +46,8 @@ export default function JoinCommunity() {
     setInvitePoint(point);
   }, [invite]);
 
+
+
   console.log(data);
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
@@ -71,6 +73,7 @@ export default function JoinCommunity() {
               description="Home of Telegram OG's"
               link="https://t.me/theOGapes_bot"
               btn="Join"
+              userId ={userId}
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -79,6 +82,7 @@ export default function JoinCommunity() {
               description="Stay updated with the latest news"
               link="https://x.com/theOGApes"
               btn="Follow"
+              userId ={userId}
             />
           </SwiperSlide>
         </Swiper>
