@@ -64,6 +64,7 @@ export default function JoinCommunity() {
         <Swiper
           spaceBetween={50}
           pagination={true}
+          autoplay={true}
           modules={[Pagination, Autoplay]}
           slidesPerView={1}
         >
