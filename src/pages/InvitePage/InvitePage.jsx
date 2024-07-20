@@ -23,7 +23,7 @@ const tailwindColors = [
   // Add more colors as needed
 ];
   return (
-    <div className="text-2xl p-[1rem] flex flex-col min-h-[100vh] text-center justify-between items-center pb-[5rem]">
+    <div className="text-2xl p-[1rem] flex flex-col min-h-[100vh] text-center justify-between items-center pb-[5rem] dark:text-white">
       <h3 className="text-[1.7rem] leading-[40px] font-[600]">
         Invite Friends <br /> and get more APES
       </h3>
