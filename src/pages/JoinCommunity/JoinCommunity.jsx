@@ -7,32 +7,46 @@ import { MdOutlineGroup } from "react-icons/md";
 import { GiCheckMark } from "react-icons/gi";
 import { useEffect } from "react";
 import { useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import JoinCarouselItem from "../../components/JoinCarouselItem/JoinCarouselItem";
+// import required modules
+import { Pagination, Autoplay } from "swiper/modules";
+import './joincommunity.css'
+
 export default function JoinCommunity() {
-const [invitePoint,setInvitePoint] = useState(0)
-  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704
-const { callApi } = useGetApis();
-const apiUrl = `user/age-and-coins/${userId}`;
-const fetchData = () => callApi(apiUrl);
+  const [invitePoint, setInvitePoint] = useState(0);
+  const userId =
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 885866704;
+  const { callApi } = useGetApis();
+  const apiUrl = `user/age-and-coins/${userId}`;
+  const fetchData = () => callApi(apiUrl);
 
-const InviteapiUrl = `user/myfriends/${userId}`;
-const fetchDataInvite = () => callApi(InviteapiUrl);
+  const InviteapiUrl = `user/myfriends/${userId}`;
+  const fetchDataInvite = () => callApi(InviteapiUrl);
 
-const { data:invite } = useQuery({ queryKey: [InviteapiUrl], queryFn: fetchDataInvite });
-const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
+  const { data: invite } = useQuery({
+    queryKey: [InviteapiUrl],
+    queryFn: fetchDataInvite,
+  });
+  const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
 
+  useEffect(() => {
+    let point = 0;
+    if (invite && invite.data && invite.data.friends) {
+      invite.data.friends.forEach((item) => {
+        point += item.user.pointGain;
+      });
+    }
 
-useEffect(() => {
-  let point = 0;
-  if (invite && invite.data && invite.data.friends) {
-    invite.data.friends.forEach(item => {
-      point += item.user.pointGain;
-    });
-  }
+    setInvitePoint(point);
+  }, [invite]);
 
-  setInvitePoint(point);
-}, [invite])
-
-console.log(data)
+  console.log(data);
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem] dark:text-white">
       <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
@@ -40,7 +54,34 @@ console.log(data)
       </div>
       <div>
         <img src={frog} className="w-[15rem]" />
-        <h2 className="text-[1.8rem] font-[600] text-center">{data?.data?.points} Apes</h2>
+        <h2 className="text-[1.8rem] font-[600] text-center">
+          {data?.data?.points} Apes
+        </h2>
+      </div>
+      <div className="relative max-w-[100%]">
+        <Swiper
+          spaceBetween={50}
+          pagination={true}
+          modules={[Pagination, Autoplay]}
+          slidesPerView={1}
+        >
+          <SwiperSlide>
+            <JoinCarouselItem
+              title="Apes Community"
+              description="Home of Telegram OG's"
+              link=""
+              btn="Join"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <JoinCarouselItem
+              title="FOLLOW US ON X.COM"
+              description="Stay updated with the latest news"
+              link=""
+              btn="Follow"
+            />
+          </SwiperSlide>
+        </Swiper>
       </div>
       <div
         className="w-[100%] rounded-[20px] flex flex-col items-center justify-center p-[1rem] gap-[0.5rem]"
@@ -75,14 +116,15 @@ console.log(data)
         <p className="text-basic flex-1">Telegram Premium</p>
         <p className="text-basic">{data?.data?.premium ? `+ 1000 Apes` : 0}</p>
       </div>
-      {invitePoint> 0 &&
-      <div className="flex justify-between items-center w-[100%] gap-[1rem]">
-        <div className="p-[1rem] bg-grey-50 rounded-[50%]">
-          <MdOutlineGroup className="text-[1.2rem]" />
+      {invitePoint > 0 && (
+        <div className="flex justify-between items-center w-[100%] gap-[1rem]">
+          <div className="p-[1rem] bg-grey-50 rounded-[50%]">
+            <MdOutlineGroup className="text-[1.2rem]" />
+          </div>
+          <p className="text-basic flex-1">Invited Friends</p>
+          <p className="text-basic">+{invitePoint} Apes</p>
         </div>
-        <p className="text-basic flex-1">Invited Friends</p>
-        <p className="text-basic">+{invitePoint} Apes</p>
-      </div>}
+      )}
     </div>
   );
 }
