@@ -69,23 +69,24 @@ export default function JoinCommunity() {
           slidesPerView={1}
         >
           <SwiperSlide>
-            <JoinCarouselItem
-              title="Apes Community"
-              description="Home of Telegram OG's"
-              link="https://t.me/theOGapes_bot"
-              btn="Join"
-              userId ={userId}
-            />
-          </SwiperSlide>
           <SwiperSlide>
             <JoinCarouselItem
               title="FOLLOW US ON X.COM"
               description="Stay updated with the latest news"
               link="https://x.com/theOGApes"
-              btn="Follow"
+              btn="Follow for 500 Apes 🦧"
               userId ={userId}
             />
           </SwiperSlide>
+            <JoinCarouselItem
+              title="Apes Community"
+              description="Home of Telegram OG's"
+              link="https://t.me/theOGapes_bot"
+              btn="Join for 500 Apes 🦧"
+              userId ={userId}
+            />
+          </SwiperSlide>
+    
         </Swiper>
       </div>
       <div
