@@ -38,10 +38,11 @@ export default function JoinCarouselItem({
       <p>{description}</p>
       <button
         onClick={handleClick}
-        className="bg-white px-[1.5rem] py-[0.5rem] w-[max-content] rounded-[50px] text-black font-[500]"
+        className="bg-white  px-[1.5rem] py-[0.5rem] w-[max-content] rounded-[50px] text-black font-[500]"
       >
         {btn}
       </button>
+      <p className="text-xs ml-2 text-white"> for 500 Apes 🦧</p>
     </div>
   );
 }
