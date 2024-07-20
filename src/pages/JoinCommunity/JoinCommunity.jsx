@@ -68,8 +68,7 @@ export default function JoinCommunity() {
           modules={[Pagination, Autoplay]}
           slidesPerView={1}
         >
-          <SwiperSlide>
-          <SwiperSlide>
+           <SwiperSlide>
             <JoinCarouselItem
               title="FOLLOW US ON X.COM"
               description="Stay updated with the latest news"
@@ -78,6 +77,8 @@ export default function JoinCommunity() {
               userId ={userId}
             />
           </SwiperSlide>
+          <SwiperSlide>
+         
             <JoinCarouselItem
               title="Apes Community"
               description="Home of Telegram OG's"
