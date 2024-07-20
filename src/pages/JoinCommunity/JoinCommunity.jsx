@@ -52,7 +52,7 @@ export default function JoinCommunity() {
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
       <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
-        🦧 Get more Apes soon with nomis
+        🦧 Let's Ape it 
       </div>
       <div>
         <img src={frog} className="w-[15rem]" />
