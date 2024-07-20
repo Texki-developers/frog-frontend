@@ -69,7 +69,7 @@ export default function JoinCommunity() {
             <JoinCarouselItem
               title="Apes Community"
               description="Home of Telegram OG's"
-              link=""
+              link="https://t.me/theOGapes_bot"
               btn="Join"
             />
           </SwiperSlide>
@@ -77,7 +77,7 @@ export default function JoinCommunity() {
             <JoinCarouselItem
               title="FOLLOW US ON X.COM"
               description="Stay updated with the latest news"
-              link=""
+              link="https://x.com/theOGApes"
               btn="Follow"
             />
           </SwiperSlide>
