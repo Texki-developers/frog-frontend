@@ -28,7 +28,7 @@ export default function Home() {
       }
     }
     console.log(
-      { data: window?.Telegram?.WebApp?.initDataUnsafe?.user },
+      { data: window?.Telegram?.WebApp?.initDataUnsafe },
       "user data"
     );
 

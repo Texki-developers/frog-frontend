@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function InvitePage() {
   const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704
-  const url = `https://t.me/theOGapes_bot?start?startapp=${userId}`; // Replace with your URL
+  const url = `https://t.me/theOGapes_bot?start=${userId}`; // Replace with your URL
   const text = "Invite your Friends to get APES coin"; // Replace with your text
 
 const { callApi } = useGetApis();
