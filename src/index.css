@@ -6,6 +6,8 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: white;
+  background: white;
 }
 * {
   box-sizing: border-box;
@@ -15,6 +17,7 @@ html {
 body {
   font-family: "Montserrat", sans-serif;
   background-color: white;
+  background: white;
 } 
 
 @layer components {
