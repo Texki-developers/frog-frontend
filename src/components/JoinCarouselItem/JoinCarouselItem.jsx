@@ -18,17 +18,18 @@ export default function JoinCarouselItem({
         try {
           const data = await AuthApiService.getApi(apiUrl);
           console.log(data, "the data");
-          return (window.location.href = link);
+         return window.open(link)
+         
         } catch (error) {
           console.error("Error fetching API", error);
           // Optionally handle the error, e.g., show a message to the user
         }
       } else {
         localStorage.setItem("apes", true);
-        return (window.location.href = link);
+        return window.open(link)
       }
     } else {
-      return (window.location.href = link);
+      return window.open(link)
     }
   };
   
