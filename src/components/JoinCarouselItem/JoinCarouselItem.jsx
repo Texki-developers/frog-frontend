@@ -17,8 +17,7 @@ export default function JoinCarouselItem({
         const apiUrl = `user/telegram/${userId}}`;
         try {
           const data = await AuthApiService.getApi(apiUrl);
-          console.log(data, "the data");
-          localStorage.setItem("apes", 'done');
+      
          return window.location.href = link
          
         } catch (error) {
