@@ -35,7 +35,7 @@ const tailwindColors = [
               </div>
               <div className='ml-4 flex justify-between w-full text-base'>
                 <p className='font-medium'>{holder.user.firstName}</p>
-                <p className='text-gray-500'>+{holder.user.point.point.toLocaleString()} APES</p>
+                <p className='text-gray-500'>+{holder.user.pointGain.toLocaleString()} APES</p>
               </div>
             
             </div>

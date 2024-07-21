@@ -6,10 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import { MdOutlineGroup } from "react-icons/md";
 import { GiCheckMark } from "react-icons/gi";
 import { useEffect } from "react";
+import { HiUserGroup } from "react-icons/hi";
 import { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { FaXTwitter } from "react-icons/fa6";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -36,6 +37,7 @@ export default function JoinCommunity() {
   const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
 
   useEffect(() => {
+    window?.Telegram?.WebApp?.expand() 
     let point = 0;
     if (invite && invite.data && invite.data.friends) {
       invite.data.friends.forEach((item) => {
@@ -123,15 +125,32 @@ export default function JoinCommunity() {
         <p className="text-basic flex-1">Telegram Premium</p>
         <p className="text-basic">{data?.data?.premium ? `+ 1000 Apes` : 0}</p>
       </div>
-      {invitePoint > 0 && (
+    
         <div className="flex justify-between items-center w-[100%] gap-[1rem]">
           <div className="p-[1rem] bg-grey-50 rounded-[50%]">
             <MdOutlineGroup className="text-[1.2rem]" />
           </div>
           <p className="text-basic flex-1">Invited Friends</p>
-          <p className="text-basic">+{invitePoint} Apes</p>
+          <p className="text-basic">{invitePoint ? `+ ${invitePoint} Apes`:0} </p>
         </div>
-      )}
+      
+   
+        <div className="flex justify-between items-center w-[100%] gap-[1rem]">
+          <div className="p-[1rem] bg-grey-50 rounded-[50%]">
+            <HiUserGroup className="text-[1.2rem]" />
+          </div>
+          <p className="text-basic flex-1">Apes Community</p>
+          <p className="text-basic">{data?.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
+        </div>
+
+        <div className="flex justify-between items-center w-[100%] gap-[1rem]">
+          <div className="p-[1rem] bg-grey-50 rounded-[50%]">
+            <FaXTwitter className="text-[1.2rem]" />
+          </div>
+          <p className="text-basic flex-1">Twitter</p>
+          <p className="text-basic">{data?.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
+        </div>
+
     </div>
   );
 }
