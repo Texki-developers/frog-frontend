@@ -48,7 +48,6 @@ export default function JoinCommunity() {
     setInvitePoint(point);
   }, [invite]);
 
-console.log(data,"Invite")
 
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
@@ -122,7 +121,7 @@ console.log(data,"Invite")
           <GiCheckMark className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Telegram Premium</p>
-        <p className="text-basic">{invite.data?.premium ? `+ 1000 Apes` : 0}</p>
+        <p className="text-basic">{invite?.data?.premium ? `+ 1000 Apes` : 0}</p>
       </div>
     
         <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -139,7 +138,7 @@ console.log(data,"Invite")
             <HiUserGroup className="text-[1.2rem]" />
           </div>
           <p className="text-basic flex-1">Apes Community</p>
-          <p className="text-basic">{invite.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
+          <p className="text-basic">{invite?.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
         </div>
 
         <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -147,7 +146,7 @@ console.log(data,"Invite")
             <FaXTwitter className="text-[1.2rem]" />
           </div>
           <p className="text-basic flex-1">Twitter</p>
-          <p className="text-basic">{invite.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
+          <p className="text-basic">{invite?.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
         </div>
 
     </div>
