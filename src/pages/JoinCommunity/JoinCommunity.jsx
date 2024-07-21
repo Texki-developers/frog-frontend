@@ -22,7 +22,7 @@ import "./joincommunity.css";
 export default function JoinCommunity() {
   const [invitePoint, setInvitePoint] = useState(0);
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 885866704;
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1103781882;
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);
@@ -48,9 +48,8 @@ export default function JoinCommunity() {
     setInvitePoint(point);
   }, [invite]);
 
+console.log(data,"Invite")
 
-
-  console.log(data);
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
       <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
@@ -123,7 +122,7 @@ export default function JoinCommunity() {
           <GiCheckMark className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Telegram Premium</p>
-        <p className="text-basic">{data?.data?.premium ? `+ 1000 Apes` : 0}</p>
+        <p className="text-basic">{invite.data?.premium ? `+ 1000 Apes` : 0}</p>
       </div>
     
         <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -140,7 +139,7 @@ export default function JoinCommunity() {
             <HiUserGroup className="text-[1.2rem]" />
           </div>
           <p className="text-basic flex-1">Apes Community</p>
-          <p className="text-basic">{data?.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
+          <p className="text-basic">{invite.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
         </div>
 
         <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -148,7 +147,7 @@ export default function JoinCommunity() {
             <FaXTwitter className="text-[1.2rem]" />
           </div>
           <p className="text-basic flex-1">Twitter</p>
-          <p className="text-basic">{data?.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
+          <p className="text-basic">{invite.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
         </div>
 
     </div>
