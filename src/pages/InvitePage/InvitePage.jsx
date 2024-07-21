@@ -4,7 +4,7 @@ import useGetApis from "../../hooks/useGetApi.hook";
 import { useQuery } from "@tanstack/react-query";
 
 export default function InvitePage() {
-  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704
+  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id 
   const url = `https://t.me/theOGapes_bot?start=${userId}`; // Replace with your URL
   const text = "Invite your Friends to get APES coin"; // Replace with your text
 
@@ -34,8 +34,8 @@ const tailwindColors = [
                 {holder.user.firstName.charAt(0).toUpperCase()}
               </div>
               <div className='ml-4 flex justify-between w-full text-base'>
-                <p className='font-medium'>{holder.user.firstName}</p>
-                <p className='text-gray-500'>+{holder.user.pointGain.toLocaleString()} APES</p>
+                <p className='font-medium'>{holder?.user?.firstName}</p>
+                <p className='text-gray-500'>+{holder?.user?.pointGain.toLocaleString()} APES</p>
               </div>
             
             </div>
