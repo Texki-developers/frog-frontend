@@ -7,7 +7,7 @@ export default function JoinCarouselItem({
   description,
   link,
   btn,
-  userId=1287479184,
+  userId,
 }) {
   const handleClick = async () => {
     if (title === "FOLLOW US ON X.COM") {
