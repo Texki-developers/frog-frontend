@@ -121,7 +121,7 @@ export default function JoinCommunity() {
           <GiCheckMark className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Telegram Premium</p>
-        <p className="text-basic">{invite?.data?.premium ? `+ 1000 Apes` : 0}</p>
+        <p className="text-basic">{data?.data?.premium ? `+ 1000 Apes` : 0}</p>
       </div>
     
         <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -138,7 +138,7 @@ export default function JoinCommunity() {
             <HiUserGroup className="text-[1.2rem]" />
           </div>
           <p className="text-basic flex-1">Apes Community</p>
-          <p className="text-basic">{invite?.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
+          <p className="text-basic">{data?.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
         </div>
 
         <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -146,7 +146,7 @@ export default function JoinCommunity() {
             <FaXTwitter className="text-[1.2rem]" />
           </div>
           <p className="text-basic flex-1">Twitter</p>
-          <p className="text-basic">{invite?.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
+          <p className="text-basic">{data?.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
         </div>
 
     </div>
