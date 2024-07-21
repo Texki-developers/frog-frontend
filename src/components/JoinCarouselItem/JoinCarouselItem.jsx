@@ -18,7 +18,7 @@ export default function JoinCarouselItem({
         try {
           const data = await AuthApiService.getApi(apiUrl);
           console.log(data, "the data");
-         return window.open(link)
+         return window.location.href = link
          
         } catch (error) {
           console.error("Error fetching API", error);
@@ -26,10 +26,10 @@ export default function JoinCarouselItem({
         }
       } else {
         localStorage.setItem("apes", true);
-        return window.open(link)
+        return window.location.href = link
       }
     } else {
-      return window.open(link)
+      return window.location.href = link
     }
   };
   
