@@ -12,12 +12,13 @@ export default function JoinCarouselItem({
   const handleClick = async () => {
     if (title === "FOLLOW US ON X.COM") {
       const getApes = localStorage.getItem("apes");
-      if (getApes) {
+      if (getApes===true) {
         console.log(getApes, "getaps");
         const apiUrl = `user/telegram/${userId}}`;
         try {
           const data = await AuthApiService.getApi(apiUrl);
           console.log(data, "the data");
+          localStorage.setItem("apes", 'done');
          return window.location.href = link
          
         } catch (error) {
