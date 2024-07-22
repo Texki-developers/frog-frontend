@@ -11,6 +11,7 @@ import { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaXTwitter } from "react-icons/fa6";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -37,7 +38,7 @@ export default function JoinCommunity() {
   const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
 
   useEffect(() => {
-    window?.Telegram?.WebApp?.expand() 
+    window?.Telegram?.WebApp?.expand();
     let point = 0;
     if (invite && invite.data && invite.data.friends) {
       invite.data.friends.forEach((item) => {
@@ -48,11 +49,10 @@ export default function JoinCommunity() {
     setInvitePoint(point);
   }, [invite]);
 
-
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
       <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
-        🦧 Let's Ape it 
+        🦧 Let's Ape it
       </div>
       <div>
         <img src={frog} className="w-[15rem]" />
@@ -68,26 +68,24 @@ export default function JoinCommunity() {
           modules={[Pagination, Autoplay]}
           slidesPerView={1}
         >
-           <SwiperSlide>
+          <SwiperSlide>
             <JoinCarouselItem
               title="FOLLOW US ON X.COM"
               description="Stay updated with the latest news"
               link="https://x.com/ape_comm"
               btn="Follow"
-              userId ={userId}
+              userId={userId}
             />
           </SwiperSlide>
           <SwiperSlide>
-         
             <JoinCarouselItem
               title="Apes Community"
               description="Home of Telegram OG's"
               link="https://t.me/apes_community"
               btn="Join"
-              userId ={userId}
+              userId={userId}
             />
           </SwiperSlide>
-    
         </Swiper>
       </div>
       <div
@@ -123,32 +121,44 @@ export default function JoinCommunity() {
         <p className="text-basic flex-1">Telegram Premium</p>
         <p className="text-basic">{data?.data?.premium ? `+ 1000 Apes` : 0}</p>
       </div>
-    
-        <div className="flex justify-between items-center w-[100%] gap-[1rem]">
-          <div className="p-[1rem] bg-grey-50 rounded-[50%]">
-            <MdOutlineGroup className="text-[1.2rem]" />
-          </div>
-          <p className="text-basic flex-1">Invited Friends</p>
-          <p className="text-basic">{invitePoint ? `+ ${invitePoint} Apes`:0} </p>
-        </div>
-      
-   
-        <div className="flex justify-between items-center w-[100%] gap-[1rem]">
-          <div className="p-[1rem] bg-grey-50 rounded-[50%]">
-            <HiUserGroup className="text-[1.2rem]" />
-          </div>
-          <p className="text-basic flex-1">Apes Community</p>
-          <p className="text-basic">{data?.data?.isChannelMember ? '+ 500 Apes' :'0' } </p>
-        </div>
 
-        <div className="flex justify-between items-center w-[100%] gap-[1rem]">
-          <div className="p-[1rem] bg-grey-50 rounded-[50%]">
-            <FaXTwitter className="text-[1.2rem]" />
-          </div>
-          <p className="text-basic flex-1">Twitter</p>
-          <p className="text-basic">{data?.data?.isTwitter ? '+ 500 Apes' :'0'}</p>
+      <div className="flex justify-between items-center w-[100%] gap-[1rem]">
+        <div className="p-[1rem] bg-grey-50 rounded-[50%]">
+          <MdOutlineGroup className="text-[1.2rem]" />
         </div>
+        <p className="text-basic flex-1">Invited Friends</p>
+        <p className="text-basic">
+          {invitePoint ? `+ ${invitePoint} Apes` : 0}{" "}
+        </p>
+      </div>
 
+      <div className="flex justify-between items-center w-[100%] gap-[1rem]">
+        <div className="p-[1rem] bg-grey-50 rounded-[50%]">
+          <HiUserGroup className="text-[1.2rem]" />
+        </div>
+        <p className="text-basic flex-1">Apes Community</p>
+        <p className="text-basic">
+          {data?.data?.isChannelMember ? "+ 500 Apes" : "0"}{" "}
+        </p>
+      </div>
+
+      <div className="flex justify-between items-center w-[100%] gap-[1rem]">
+        <div className="p-[1rem] bg-grey-50 rounded-[50%]">
+          <FaXTwitter className="text-[1.2rem]" />
+        </div>
+        <p className="text-basic flex-1">Twitter</p>
+        <p className="text-basic">
+          {data?.data?.isTwitter ? "+ 500 Apes" : "0"}
+        </p>
+      </div>
+
+      <div className="flex justify-between items-center w-[100%] gap-[1rem]">
+        <div className="p-[1rem] bg-grey-50 rounded-[50%]">
+          <IoMdCheckmarkCircleOutline className="text-[1.2rem]" />
+        </div>
+        <p className="text-basic flex-1">Add APE to your username</p>
+        <p className="text-basic">{data?.data?.apeInclude || 0}</p>
+      </div>
     </div>
   );
 }
