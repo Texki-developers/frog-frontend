@@ -63,19 +63,19 @@ export default function LeaderBoard() {
             {(data && data?.data?.totalCount) || 0} holders
           </h2>
           {data?.data?.users &&
-            data?.data?.users.map((holder, index) => (
+            data?.data?.users?.map((holder, index) => (
               <div key={holder.rank} className="flex items-center p-4 border-b">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center ${
                     tailwindColors[index % tailwindColors.length]
                   }`}
                 >
-                  {holder.firstName.charAt(0).toUpperCase()}
+                  {holder?.firstName?.charAt(0).toUpperCase()}
                 </div>
                 <div className="ml-4">
                   <p className="font-medium">{holder.firstName}</p>
                   <p className="text-gray-500">
-                    {holder.point.point.toLocaleString()} APES
+                    {holder?.point?.point?.toLocaleString()} APES
                   </p>
                 </div>
                 <div className="ml-auto">
