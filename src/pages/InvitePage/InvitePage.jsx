@@ -28,7 +28,14 @@ const tailwindColors = [
         Invite Friends <br /> and get more APES
       </h3>
       <img src={frog} className="w-[15rem]" alt="Frog" />
+      <div className="w-full flex justify-start">
+      <h2 className="text-base font-medium mb-2">
+            {(data && data?.data?.friends.length) || 0} Friends
+          </h2>
+      </div>
+    
       {data && data?.data?.friends && data?.data?.friends.map((holder, index) => (
+      
             <div key={holder.rank} className='flex items-center p-4  w-full'>
               <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tailwindColors[index % tailwindColors.length]}`}>
                 {holder.user.firstName.charAt(0).toUpperCase()}
