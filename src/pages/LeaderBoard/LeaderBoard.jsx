@@ -59,9 +59,9 @@ export default function LeaderBoard() {
         </div>
 
         <div className="pb-10">
-          <h2 className="text-xl font-medium mb-2">
+          {/* <h2 className="text-xl font-medium mb-2">
             {(data && data?.data?.totalCount) || 0} holders
-          </h2>
+          </h2> */}
           {data?.data?.users &&
             data?.data?.users?.map((holder, index) => (
               <div key={holder.rank} className="flex items-center p-4 border-b">
