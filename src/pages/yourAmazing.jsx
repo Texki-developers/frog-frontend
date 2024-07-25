@@ -11,7 +11,7 @@ export default function YouAreAmazing() {
   const [showConfetti, setShowConfetti] = useState(true);
 
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1287479184;
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ;
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);
