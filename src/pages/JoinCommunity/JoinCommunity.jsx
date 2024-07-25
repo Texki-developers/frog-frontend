@@ -23,7 +23,7 @@ import "./joincommunity.css";
 export default function JoinCommunity() {
   const [invitePoint, setInvitePoint] = useState(0);
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1103781882;
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704;
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);
@@ -112,7 +112,7 @@ export default function JoinCommunity() {
           <CiCalendarDate className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Account Age</p>
-        <p className="text-basic">+{data?.data?.agePoint} Apes</p>
+        <p className="text-basic">+{data?.data?.age} Apes</p>
       </div>
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
         <div className="p-[1rem] bg-grey-50 rounded-[50%]">
