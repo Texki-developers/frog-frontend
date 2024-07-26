@@ -9,7 +9,12 @@ export default function LeaderBoard() {
   const url = `user/leadership-board`;
   const fetchData = () => callApi(url);
 
+  const Apiurl = `/user/myPos/${userId}`;
+  const fetchCurrentUser = () => callApi(Apiurl);
+
   const { data } = useQuery({ queryKey: [url], queryFn: fetchData });
+  const {data:currentUser} = useQuery({ queryKey: [Apiurl], queryFn: fetchCurrentUser });
+
 
   const tailwindColors = [
     "bg-red-400",
@@ -21,20 +26,6 @@ export default function LeaderBoard() {
     // Add more colors as needed
   ];
 
-  let myRank;
-  data &&
-    data?.data?.users.map((items, index) => {
-      console.log(index);
-      if (items.tgId === userId) {
-        myRank = {
-          ...items,
-          rank: index + 1,
-        };
-      }
-      return items.tgId === userId && items;
-    });
-
-  console.log(myRank);
   return (
     <div className="flex flex-col items-center p-4">
       <div className="w-full">
@@ -45,17 +36,15 @@ export default function LeaderBoard() {
           <div className="flex items-center bg-gray-100 p-4 rounded-xl my-12">
             <div className="flex items-center">
               <div className="bg-red-500 text-white rounded-full flex items-center justify-center w-10 h-10">
-                {myRank?.firstName?.charAt(0).toUpperCase()}
+                  {currentUser?.data?.name?.charAt(0).toUpperCase()}
               </div>
               <div className="ml-4">
-                <p className="font-medium">{myRank?.firstName}</p>
-                <p className="text-gray-500">
-                  {new Intl.NumberFormat().format(myRank?.points || 0)} APES
-                </p>
+                <p className="font-medium">{currentUser?.data?.name}</p>
+                <p className="text-gray-500">{currentUser?.data?.points} APES</p>
               </div>
             </div>
             <div className="ml-auto">
-              <p className="text-gray-500">#{myRank?.rank}</p>
+              <p className="text-gray-500">#{currentUser?.data?.position}</p>
             </div>
           </div>
         </div>
@@ -66,7 +55,7 @@ export default function LeaderBoard() {
           </h2> */}
           {data?.data?.users &&
             data?.data?.users?.map((holder, index) => (
-              <div key={holder.rank} className="flex items-center p-4 border-b">
+              <div key={holder?.rank} className="flex items-center p-4 border-b">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center ${
                     tailwindColors[index % tailwindColors.length]
@@ -75,7 +64,7 @@ export default function LeaderBoard() {
                   {holder?.firstName?.charAt(0).toUpperCase()}
                 </div>
                 <div className="ml-4">
-                  <p className="font-medium">{holder.firstName}</p>
+                  <p className="font-medium">{holder?.firstName}</p>
                   <p className="text-gray-500">
                     {new Intl.NumberFormat().format(holder?.points || 0)} APES
                   </p>
