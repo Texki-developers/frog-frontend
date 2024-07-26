@@ -10,7 +10,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaTelegram, FaXTwitter } from "react-icons/fa6";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 // Import Swiper styles
 import "swiper/css";
@@ -103,7 +103,7 @@ export default function JoinCommunity() {
           onClick={() => window.open("https://t.me/apes_community")}
           className="text-white bg-black btn-common"
         >
-          Join for +500 APES
+          Join for +1000 APES
         </button>
       </div>
       <h3 className="text-[1.1rem]">Your Rewards</h3>
@@ -134,11 +134,11 @@ export default function JoinCommunity() {
 
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
         <div className="p-[1rem] bg-grey-50 rounded-[50%]">
-          <HiUserGroup className="text-[1.2rem]" />
+          <FaTelegram className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Apes Community</p>
         <p className="text-basic">
-          {data?.data?.isChannelMember ? "+ 500 Apes" : "0"}{" "}
+          {data?.data?.isChannelMember ? "+ 1000 Apes" : "0"}{" "}
         </p>
       </div>
 
@@ -148,7 +148,7 @@ export default function JoinCommunity() {
         </div>
         <p className="text-basic flex-1">Twitter</p>
         <p className="text-basic">
-          {data?.data?.isTwitter ? "+ 500 Apes" : "0"}
+          {data?.data?.isTwitter ? "+ 1000 Apes" : "0"}
         </p>
       </div>
 
