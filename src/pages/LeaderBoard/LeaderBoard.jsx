@@ -28,7 +28,7 @@ export default function LeaderBoard() {
       if (items.tgId === userId) {
         myRank = {
           ...items,
-          rank: index +1,
+          rank: index + 1,
         };
       }
       return items.tgId === userId && items;
@@ -45,11 +45,13 @@ export default function LeaderBoard() {
           <div className="flex items-center bg-gray-100 p-4 rounded-xl my-12">
             <div className="flex items-center">
               <div className="bg-red-500 text-white rounded-full flex items-center justify-center w-10 h-10">
-                  {myRank?.firstName?.charAt(0).toUpperCase()}
+                {myRank?.firstName?.charAt(0).toUpperCase()}
               </div>
               <div className="ml-4">
                 <p className="font-medium">{myRank?.firstName}</p>
-                <p className="text-gray-500">{myRank?.points} APES</p>
+                <p className="text-gray-500">
+                  {new Intl.NumberFormat().format(myRank?.points || 0)} APES
+                </p>
               </div>
             </div>
             <div className="ml-auto">
@@ -75,7 +77,7 @@ export default function LeaderBoard() {
                 <div className="ml-4">
                   <p className="font-medium">{holder.firstName}</p>
                   <p className="text-gray-500">
-                    {holder?.points?.toLocaleString()} APES
+                    {new Intl.NumberFormat().format(holder?.points || 0)} APES
                   </p>
                 </div>
                 <div className="ml-auto">
