@@ -66,7 +66,7 @@ export default function LeaderBoard() {
                 <div className="ml-4">
                   <p className="font-medium">{holder?.firstName}</p>
                   <p className="text-gray-500">
-                    {holder?.points?.toLocaleString()} APES
+                    {new Intl.NumberFormat().format(holder?.points || 0)} APES
                   </p>
                 </div>
                 <div className="ml-auto">
