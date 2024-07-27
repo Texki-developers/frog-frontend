@@ -23,7 +23,7 @@ import "./joincommunity.css";
 export default function JoinCommunity() {
   const [invitePoint, setInvitePoint] = useState(0);
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ||885866704;
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ;
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);

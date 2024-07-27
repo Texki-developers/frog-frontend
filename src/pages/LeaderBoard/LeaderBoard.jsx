@@ -4,7 +4,7 @@ import useGetApis from "../../hooks/useGetApi.hook";
 
 export default function LeaderBoard() {
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 885866704;
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ;
   const { callApi } = useGetApis();
   const url = `user/leadership-board`;
   const fetchData = () => callApi(url);
