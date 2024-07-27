@@ -103,7 +103,7 @@ export default function JoinCommunity() {
           onClick={() => window.open("https://t.me/apes_community")}
           className="text-white bg-black btn-common"
         >
-          Join for +1000 APES
+          Join for +500 APES
         </button>
       </div>
       <h3 className="text-[1.1rem]">Your Rewards</h3>
@@ -138,17 +138,16 @@ export default function JoinCommunity() {
         </div>
         <p className="text-basic flex-1">Apes Community</p>
         <p className="text-basic">
-          {data?.data?.isChannelMember ? "+ 1000 Apes" : "0"}{" "}
+          {data?.data?.isChannelMember ? "+ 500 Apes" : "0"}{" "}
         </p>
       </div>
-
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
         <div className="p-[1rem] bg-grey-50 rounded-[50%]">
           <FaXTwitter className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Twitter</p>
         <p className="text-basic">
-          {data?.data?.isTwitter ? "+ 1000 Apes" : "0"}
+          {data?.data?.isTwitter ? "+ 500 Apes" : "0"}
         </p>
       </div>
 

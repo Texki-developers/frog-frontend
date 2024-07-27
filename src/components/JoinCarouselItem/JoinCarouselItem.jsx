@@ -42,7 +42,7 @@ export default function JoinCarouselItem({
       >
         {btn}
       </button>
-      <p className="text-xs ml-2 text-white"> for 1000 Apes 🦧</p>
+      <p className="text-xs ml-2 text-white"> for 500 Apes 🦧</p>
     </div>
   );
 }
