@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 export default function RisingStar() {
   const navigate = useNavigate();
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1287479184;
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id ;
   const { callApi } = useGetApis();
   const apiUrl = `user/age/${userId}`;
   const fetchData = () => callApi(apiUrl);
