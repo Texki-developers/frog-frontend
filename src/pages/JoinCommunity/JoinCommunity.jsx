@@ -23,7 +23,7 @@ import "./joincommunity.css";
 export default function JoinCommunity() {
 
   const userId =
-    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id 
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1103781882
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);
@@ -34,13 +34,14 @@ export default function JoinCommunity() {
 
   useEffect(() => {
     window?.Telegram?.WebApp?.expand();
-   if(data){
-    if(data?.user?.userId){
-      localStorage.setItem('user',JSON.stringify({id:data?.user?.userId,name:data?.user?.name}))
+    if (data && data.user) {
+      // Added a check to ensure data and user object is available
+      const { userId, name } = data.user;
+      if (userId) {
+        localStorage.setItem('user', JSON.stringify({ id: userId, name }));
+      }
     }
-
-   }
-  }, []);
+  }, [data]); 
 
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">

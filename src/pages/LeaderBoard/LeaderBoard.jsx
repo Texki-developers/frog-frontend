@@ -5,24 +5,32 @@ import useGetApis from "../../hooks/useGetApi.hook";
 export default function LeaderBoard() {
   const [currentUser, setCurrentUser] = useState(null);
   const { callApi } = useGetApis();
-  const url = currentUser ? `user/leadership-board/${currentUser.id}` : null;
 
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["leadershipBoard", currentUser],
-    queryFn: () => callApi(url),
-    enabled: !!currentUser?.id, // Ensure query is enabled only if currentUser is set
-  });
-
+  // Fetch currentUser from localStorage
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user, "USER");
     if (user) {
       setCurrentUser(user);
     }
   }, []);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  // URL is determined after currentUser is set
+  const url = currentUser ? `user/leadership-board/${currentUser.id}` : null;
+
+  // Call API only when currentUser is available
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["leadershipBoard", currentUser?.id],
+    queryFn: () => callApi(url),
+    enabled: !!currentUser?.id,
+    retry: 1, // Retry once on failure
+    refetchOnWindowFocus: false, // Disable refetch on window focus
+  });
+
+
+
+  // Extract specificUser and leaderboard data
+  const specificUser = data?.users?.specificUser;
+  const leaderboard = data?.users?.topUsers;
 
   const tailwindColors = [
     "bg-red-400",
@@ -33,8 +41,7 @@ export default function LeaderBoard() {
     "bg-pink-400",
     // Add more colors as needed
   ];
-  const specificUser = data?.users?.specificUser;
-  const leaderboard = data?.users?.topUsers;
+
   return (
     <div className="flex flex-col items-center p-4">
       <div className="w-full">
@@ -49,28 +56,25 @@ export default function LeaderBoard() {
               </div>
               <div className="ml-4">
                 <p className="font-medium">{currentUser?.name}</p>
-                {/* Assuming `data` includes current user's points */}
                 <p className="text-gray-500">
                   {new Intl.NumberFormat("en-US").format(
-                    specificUser?.totalPoints
-                  ) || 0}{" "}
+                    specificUser?.totalPoints || 0
+                  )}{" "}
                   APES
                 </p>
               </div>
             </div>
             <div className="ml-auto">
-              {/* Assuming `data` includes current user's position */}
-              <p className="text-gray-500">#{specificUser?.rank}</p>
+              <p className="text-gray-500">#{specificUser?.rank || "N/A"}</p>
             </div>
           </div>
         </div>
 
         <div className="pb-10">
-          {/* Assuming `data.data.users` is the list of users */}
           {leaderboard &&
-            leaderboard?.map((holder, index) => (
+            leaderboard.map((holder, index) => (
               <div
-                key={holder?.rank}
+                key={holder?.firstName || index}
                 className="flex items-center p-4 border-b"
               >
                 <div
@@ -78,7 +82,7 @@ export default function LeaderBoard() {
                     tailwindColors[index % tailwindColors.length]
                   }`}
                 >
-                  {holder?.firstName?.charAt(0).toUpperCase()}
+                  {holder?.firstName?.charAt(0).toUpperCase() || "?"}
                 </div>
                 <div className="ml-4">
                   <p className="font-medium">{holder?.firstName}</p>
