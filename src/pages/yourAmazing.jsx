@@ -54,7 +54,7 @@ export default function YouAreAmazing() {
               <img src={ape} alt="Cat" className="w-[17rem]" />
             </div>
             <div className="text-6xl font-bold mt-4">
-              {data?.data?.points} APES
+              {data?.data?.account_age} APES
             </div>
             <p className="text-gray-500 mt-4">
               Thanks for your time on Telegram 🤝
