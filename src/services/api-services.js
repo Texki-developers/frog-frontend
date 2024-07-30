@@ -2,7 +2,7 @@ import axios from "axios";
 
 class AuthApiService {
   static instance = axios.create({
-    baseURL: 'https://api.apescommunity.com/',
+    baseURL: 'http://localhost:5200/v2/',
     headers: {
       "Content-Type": "application/json",
     },

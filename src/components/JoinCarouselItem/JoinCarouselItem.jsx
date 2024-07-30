@@ -8,6 +8,7 @@ export default function JoinCarouselItem({
   link,
   btn,
   userId,
+  reward
 }) {
   const handleClick = async () => {
     if (title === "FOLLOW US ON X.COM") {
@@ -42,7 +43,7 @@ export default function JoinCarouselItem({
       >
         {btn}
       </button>
-      <p className="text-xs ml-2 text-white"> for 500 Apes 🦧</p>
+      <p className="text-xs ml-2 text-white"> {reward}</p>
     </div>
   );
 }
