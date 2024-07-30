@@ -32,9 +32,7 @@ export default function Home() {
       "user data"
     );
 
-    const user = window?.Telegram?.WebApp?.initDataUnsafe?.user || {
-      id: 189769283,
-    };
+    const user = window?.Telegram?.WebApp?.initDataUnsafe?.user ;
 
     if (user) {
       const apiBody = {
