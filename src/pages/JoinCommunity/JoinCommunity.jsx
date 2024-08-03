@@ -21,23 +21,18 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "./joincommunity.css";
 import Modal from "../../components/Modal/Modal";
 import CoinsModal from "../../components/CoinsModal/CoinsModal";
+import AuthApiService from "../../services/api-services";
 
 export default function JoinCommunity() {
-  const [invitePoint, setInvitePoint] = useState(0);
+  const [sessionUser, SetsessionUser] = useState();
   const [redeemCode, setRedeemCode] = useState();
   const [isOpen, setOpen] = useState(false);
-  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id;
+  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1287479184
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);
+  const [loading,setLoading] = useState(true)
 
-  const InviteapiUrl = `user/myfriends/${userId}`;
-  const fetchDataInvite = () => callApi(InviteapiUrl);
-
-  const { data: invite } = useQuery({
-    queryKey: [InviteapiUrl],
-    queryFn: fetchDataInvite,
-  });
   const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
 
   const handleClosing = () => {
@@ -46,22 +41,35 @@ export default function JoinCommunity() {
 
   useEffect(() => {
     window?.Telegram?.WebApp?.expand();
-    let point = 0;
-    if (invite && invite.data && invite.data.friends) {
-      invite.data.friends.forEach((item) => {
-        point += item.user.pointGain;
-      });
+    if (data && data.user) {
+      // Added a check to ensure data and user object is available
+      const { userId, name } = data.user;
+      SetsessionUser(userId)
+      if (userId) {
+        localStorage.setItem('user', JSON.stringify({ id: userId, name }));
+      }
     }
+  }, [data]); 
 
-    setInvitePoint(point);
-  }, [invite]);
+  const handleRedeem = async () => {
+    setOpen(true)
+     await AuthApiService.postApi("secret/token/redeem", {secret:redeemCode,userID:sessionUser}).then((res)=>{
+      if(res.data.message === 'REDEEMED'){
+        setLoading(false)
+        setRedeemCode(res.data.point)
+      }else{
+        setOpen(false)
+      }
+    
+     })
+  };
 
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
       <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
         🦧 Let's Ape it
       </div>
-      <CoinsModal isOpen={isOpen} isLoading onClose={handleClosing} />
+      <CoinsModal isOpen={isOpen} points={redeemCode} isLoading={loading} onClose={handleClosing} />
       <div className="w-[100%] flex flex-col gap-4">
         <input
           type="text"
@@ -75,7 +83,7 @@ export default function JoinCommunity() {
               ? "opacity-30 cursor-not-allowed"
               : ""
           }`}
-          onClick={() => setOpen(true)}
+          onClick={handleRedeem}
         >
           Redeem Code
         </button>
@@ -83,7 +91,7 @@ export default function JoinCommunity() {
       <div>
         <img src={frog} className="w-[15rem]" />
         <h2 className="text-[1.8rem] font-[600] text-center">
-          {data?.data?.points} Apes
+          {data?.user?.totalPoints} Apes
         </h2>
       </div>
       <div className="relative max-w-[100%]">
@@ -101,6 +109,7 @@ export default function JoinCommunity() {
               link="https://x.com/ape_comm"
               btn="Follow"
               userId={userId}
+              reward='for 500 Apes 🦧'
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -110,6 +119,17 @@ export default function JoinCommunity() {
               link="https://t.me/apes_community"
               btn="Join"
               userId={userId}
+              reward='for 500 Apes 🦧'
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <JoinCarouselItem
+              title="Apes In Your Username"
+              description="Add Apes in your Telegram Username"
+              link=""
+              btn="Go"
+              userId={userId}
+              reward='for 1000 Apes 🦧'
             />
           </SwiperSlide>
         </Swiper>
@@ -138,14 +158,14 @@ export default function JoinCommunity() {
           <CiCalendarDate className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Account Age</p>
-        <p className="text-basic">+{data?.data?.age} Apes</p>
+        <p className="text-basic">+{data?.user?.account_age} Apes</p>
       </div>
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
         <div className="p-[1rem] bg-grey-50 rounded-[50%]">
           <GiCheckMark className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Telegram Premium</p>
-        <p className="text-basic">{data?.data?.premium ? `+ 1000 Apes` : 0}</p>
+        <p className="text-basic">{data?.user?.isPremium ? `+ 1000 Apes` : 0}</p>
       </div>
 
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -154,7 +174,7 @@ export default function JoinCommunity() {
         </div>
         <p className="text-basic flex-1">Invited Friends</p>
         <p className="text-basic">
-          {invitePoint ? `+ ${invitePoint} Apes` : 0}{" "}
+          {`+ ${data?.user?.referral || 0}  Apes`}{" "}
         </p>
       </div>
 
@@ -164,7 +184,7 @@ export default function JoinCommunity() {
         </div>
         <p className="text-basic flex-1">Apes Community</p>
         <p className="text-basic">
-          {data?.data?.isChannelMember ? "+ 500 Apes" : "0"}{" "}
+          {data?.user?.channel_member ? "+ 500 Apes" : "0"}{" "}
         </p>
       </div>
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -173,7 +193,7 @@ export default function JoinCommunity() {
         </div>
         <p className="text-basic flex-1">Twitter</p>
         <p className="text-basic">
-          {data?.data?.isTwitter ? "+ 500 Apes" : "0"}
+          {data?.user?.twitter ? "+ 500 Apes" : "0"}
         </p>
       </div>
 

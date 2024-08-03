@@ -9,7 +9,7 @@ export default function InvitePage() {
   const text = "Invite your Friends to get APES coin"; // Replace with your text
 
 const { callApi } = useGetApis();
-const apiUrl = `user/myfriends/${userId}`;
+const apiUrl = `user/friends/${userId}`;
 const fetchData = () => callApi(apiUrl);
 
 const { data } = useQuery({ queryKey: [url], queryFn: fetchData });
@@ -22,6 +22,8 @@ const tailwindColors = [
   'bg-pink-400',
   // Add more colors as needed
 ];
+
+console.log(data,"FN")
   return (
     <div className="text-2xl p-[1rem] flex flex-col min-h-[100vh] text-center justify-between items-center pb-[5rem]">
       <h3 className="text-[1.7rem] leading-[40px] font-[600]">
@@ -30,19 +32,18 @@ const tailwindColors = [
       <img src={frog} className="w-[15rem]" alt="Frog" />
       <div className="w-full flex justify-start">
       <h2 className="text-base font-medium mb-2">
-            {(data && data?.data?.friends.length) || 0} Friends
+            {(data && data?.data?.length) || 0} Friends
           </h2>
       </div>
     
-      {data && data?.data?.friends && data?.data?.friends.map((holder, index) => (
-      
+      {data &&  data?.data?.map((holder, index) => (
             <div key={holder.rank} className='flex items-center p-4  w-full'>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tailwindColors[index % tailwindColors.length]}`}>
-                {holder.user.firstName.charAt(0).toUpperCase()}
+              <div className={`w-10  rounded-full flex items-center justify-center ${tailwindColors[index % tailwindColors.length]}`}>
+                {holder.firstName.charAt(0).toUpperCase()}
               </div>
               <div className='ml-4 flex justify-between w-full text-base'>
-                <p className='font-medium'>{holder?.user?.firstName}</p>
-                <p className='text-gray-500'>+{holder?.user?.pointGain.toLocaleString()} APES</p>
+                <p className='font-medium'>{holder?.firstName}</p>
+                <p className='text-gray-500'>+{holder?.points.toLocaleString()} APES</p>
               </div>
             
             </div>

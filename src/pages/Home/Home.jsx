@@ -32,13 +32,13 @@ export default function Home() {
       "user data"
     );
 
-    const user = window?.Telegram?.WebApp?.initDataUnsafe?.user;
+    const user = window?.Telegram?.WebApp?.initDataUnsafe?.user ;
 
     if (user) {
       const apiBody = {
-        firstName: user.first_name,
-        lastName: user.last_name,
-        userName: user.username,
+        firstName: user.first_name || "muhsin",
+        lastName: user.last_name || "n",
+        userName: user.username || "abcd",
         id: user.id,
         premium: user?.is_premium ? true : false,
       };
@@ -47,7 +47,9 @@ export default function Home() {
   }, []);
 
   const createUser = async (apiBody) => {
-    (await AuthApiService.postApi) < any, any > ("user/init", apiBody);
+    const data = await AuthApiService.postApi("user/init", apiBody);
+    console.log(data, "this is data");
+    localStorage.setItem('account_age', data.accountAge)
   };
 
   return (
