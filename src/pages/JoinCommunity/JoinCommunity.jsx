@@ -126,7 +126,7 @@ export default function JoinCommunity() {
             <JoinCarouselItem
               title="Apes In Your Username"
               description="Add Apes in your Telegram Username"
-              link=""
+              link="/"
               btn="Go"
               userId={userId}
               reward='for 1000 Apes 🦧'
