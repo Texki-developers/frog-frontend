@@ -66,15 +66,15 @@ export default function JoinCommunity() {
 
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
-      <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
+      {/* <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
         🦧 Let's Ape it
-      </div>
+      </div> */}
       <CoinsModal isOpen={isOpen} points={redeemCode} isLoading={loading} onClose={handleClosing} />
       <div className="w-[100%] flex flex-col gap-4">
         <input
           type="text"
           placeholder="ABC001"
-          className="bg-red font-[600] w-[100%] text-[1.3rem] text-center outline-none border-b-2"
+          className="bg-red font-[600] w-[100%] text-[1rem] text-center outline-none border-b-2"
           onChange={(e) => setRedeemCode(e.target.value)}
         />
         <button
