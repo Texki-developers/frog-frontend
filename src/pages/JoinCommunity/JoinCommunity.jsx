@@ -22,16 +22,22 @@ import "./joincommunity.css";
 import Modal from "../../components/Modal/Modal";
 import CoinsModal from "../../components/CoinsModal/CoinsModal";
 import AuthApiService from "../../services/api-services";
+import CountdownTimer from "../../components/CountdownTImer/CountdownTimer";
+import Countdown from "react-countdown";
+import { useNavigate } from "react-router";
 
 export default function JoinCommunity() {
   const [sessionUser, SetsessionUser] = useState();
   const [redeemCode, setRedeemCode] = useState();
   const [isOpen, setOpen] = useState(false);
-  const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1287479184
+  const userId =
+    window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 1287479184;
   const { callApi } = useGetApis();
   const apiUrl = `user/age-and-coins/${userId}`;
   const fetchData = () => callApi(apiUrl);
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [expiryTime, setExpiryTime] = useState("");
+  const navigate = useNavigate();
 
   const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
 
@@ -44,33 +50,69 @@ export default function JoinCommunity() {
     if (data && data.user) {
       // Added a check to ensure data and user object is available
       const { userId, name } = data.user;
-      SetsessionUser(userId)
+      SetsessionUser(userId);
       if (userId) {
-        localStorage.setItem('user', JSON.stringify({ id: userId, name }));
+        localStorage.setItem("user", JSON.stringify({ id: userId, name }));
       }
     }
-  }, [data]); 
+  }, [data]);
 
-  const handleRedeem = async () => {
-    setOpen(true)
-     await AuthApiService.postApi("secret/token/redeem", {secret:redeemCode,userID:sessionUser}).then((res)=>{
-      if(res.data.message === 'REDEEMED'){
-        setLoading(false)
-        setRedeemCode(res.data.point)
-      }else{
-        setOpen(false)
-      }
-    
-     })
+  useEffect(() => {
+    handleCountdown();
+  }, []);
+
+  const handleCountdown = async () => {
+    const data = await AuthApiService.getApi("secret/token/validity");
+
+    if (data?.data?.expiryTime) {
+      setExpiryTime(data?.data?.expiryTime);
+    }
+    console.log(data);
   };
 
+  const handleRedeem = async () => {
+    setOpen(true);
+    await AuthApiService.postApi("secret/token/redeem", {
+      secret: redeemCode,
+      userID: sessionUser,
+    }).then((res) => {
+      if (res.data.message === "REDEEMED") {
+        setLoading(false);
+        setRedeemCode(res.data.point);
+      } else {
+        setOpen(false);
+      }
+    });
+  };
+
+  console.log(expiryTime, "this is expiry");
   return (
     <div className="flex flex-col p-[1rem] items-center gap-[2rem] pb-[5rem]">
       {/* <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
         🦧 Let's Ape it
       </div> */}
-      <CoinsModal isOpen={isOpen} points={redeemCode} isLoading={loading} onClose={handleClosing} />
-      <div className="w-[100%] flex flex-col gap-4">
+      <CoinsModal
+        isOpen={isOpen}
+        points={redeemCode}
+        isLoading={loading}
+        onClose={handleClosing}
+      />
+      {expiryTime && (
+        <div onClick={() => navigate("/tasks")}>
+          <Countdown
+            date={expiryTime}
+            renderer={({ days, hours, minutes, seconds }) => (
+              <CountdownTimer
+                days={days}
+                hours={hours}
+                mins={minutes}
+                seconds={seconds}
+              />
+            )}
+          />
+        </div>
+      )}
+      {/* <div className="w-[100%] flex flex-col gap-4">
         <input
           type="text"
           placeholder="ABC001"
@@ -87,7 +129,7 @@ export default function JoinCommunity() {
         >
           Redeem Code
         </button>
-      </div>
+      </div> */}
       <div>
         <img src={frog} className="w-[15rem]" />
         <h2 className="text-[1.8rem] font-[600] text-center">
@@ -109,7 +151,7 @@ export default function JoinCommunity() {
               link="https://x.com/ape_comm"
               btn="Follow"
               userId={userId}
-              reward='for 500 Apes 🦧'
+              reward="for 500 Apes 🦧"
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -119,7 +161,7 @@ export default function JoinCommunity() {
               link="https://t.me/apes_community"
               btn="Join"
               userId={userId}
-              reward='for 500 Apes 🦧'
+              reward="for 500 Apes 🦧"
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -129,7 +171,7 @@ export default function JoinCommunity() {
               link="/"
               btn="Go"
               userId={userId}
-              reward='for 1000 Apes 🦧'
+              reward="for 1000 Apes 🦧"
             />
           </SwiperSlide>
         </Swiper>
@@ -165,7 +207,9 @@ export default function JoinCommunity() {
           <GiCheckMark className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Telegram Premium</p>
-        <p className="text-basic">{data?.user?.isPremium ? `+ 1000 Apes` : 0}</p>
+        <p className="text-basic">
+          {data?.user?.isPremium ? `+ 1000 Apes` : 0}
+        </p>
       </div>
 
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -173,9 +217,7 @@ export default function JoinCommunity() {
           <MdOutlineGroup className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Invited Friends</p>
-        <p className="text-basic">
-          {`+ ${data?.user?.referral || 0}  Apes`}{" "}
-        </p>
+        <p className="text-basic">{`+ ${data?.user?.referral || 0}  Apes`} </p>
       </div>
 
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">
@@ -192,9 +234,7 @@ export default function JoinCommunity() {
           <FaXTwitter className="text-[1.2rem]" />
         </div>
         <p className="text-basic flex-1">Twitter</p>
-        <p className="text-basic">
-          {data?.user?.twitter ? "+ 500 Apes" : "0"}
-        </p>
+        <p className="text-basic">{data?.user?.twitter ? "+ 500 Apes" : "0"}</p>
       </div>
 
       <div className="flex justify-between items-center w-[100%] gap-[1rem]">

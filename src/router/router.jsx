@@ -7,6 +7,7 @@ import InvitePage from "../pages/InvitePage/InvitePage";
 import LeaderBoard from "../pages/LeaderBoard/LeaderBoard";
 import YouAreAmazing from "../pages/yourAmazing";
 import RisingStar from "../pages/risingStar";
+import Taks from "../pages/Tasks/Taks";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path:"/amazing",
         element:<YouAreAmazing/>
+      },
+      {
+        path:"/tasks",
+        element:<Taks/>
       }
     ],
   },

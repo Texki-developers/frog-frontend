@@ -1,6 +1,7 @@
 import { RiHome5Line } from "react-icons/ri";
 import { GoTrophy } from "react-icons/go";
 import { MdOutlineGroup } from "react-icons/md";
+import { FaTasks } from "react-icons/fa";
 
 export const navData = [
   {
@@ -12,6 +13,11 @@ export const navData = [
     title: "Leaderboard",
     path: "/leaderboard",
     icon: <GoTrophy className="text-[1.2rem]" />,
+  },
+  {
+    title: "Tasks",
+    path: "/tasks",
+    icon: <FaTasks className="text-[1.2rem]" />,
   },
   {
     title: "Friends",
