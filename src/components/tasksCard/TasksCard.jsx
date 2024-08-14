@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function TasksCard({ title, description, icon }) {
+export default function TasksCard({ title, description, icon, clickHandler }) {
   return (
-    <div className="flex items-center gap-[0.5rem] bg-slate-50 p-[5px] rounded-[8px] w-[100%]">
+    <div className="flex items-center gap-[0.5rem] bg-slate-50 p-[5px] rounded-[8px] w-[100%]" onClick={clickHandler}>
       <div>
         <img
           src={icon}

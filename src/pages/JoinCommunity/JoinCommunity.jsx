@@ -41,9 +41,7 @@ export default function JoinCommunity() {
 
   const { data } = useQuery({ queryKey: [apiUrl], queryFn: fetchData });
 
-  const handleClosing = () => {
-    setOpen(false);
-  };
+  
 
   useEffect(() => {
     window?.Telegram?.WebApp?.expand();
@@ -91,12 +89,6 @@ export default function JoinCommunity() {
       {/* <div className="w-[100%] bg-pink-50 p-[5px] uppercase text-basic text-[0.8rem] font-[500] text-center rounded-[6px]">
         🦧 Let's Ape it
       </div> */}
-      <CoinsModal
-        isOpen={isOpen}
-        points={redeemCode}
-        isLoading={loading}
-        onClose={handleClosing}
-      />
       {expiryTime && (
         <div onClick={() => navigate("/tasks")}>
           <Countdown

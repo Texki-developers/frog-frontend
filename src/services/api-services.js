@@ -5,7 +5,7 @@ class AuthApiService {
   live = "https://api.apescommunity.com/v2/";
 
   static instance = axios.create({
-    baseURL: "https://api.apescommunity.com/v2/",
+    baseURL: "http://localhost:5200/v2/",
     headers: {
       "Content-Type": "application/json",
     },
