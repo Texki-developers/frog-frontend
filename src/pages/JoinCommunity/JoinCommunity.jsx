@@ -68,20 +68,7 @@ export default function JoinCommunity() {
     console.log(data);
   };
 
-  const handleRedeem = async () => {
-    setOpen(true);
-    await AuthApiService.postApi("secret/token/redeem", {
-      secret: redeemCode,
-      userID: sessionUser,
-    }).then((res) => {
-      if (res.data.message === "REDEEMED") {
-        setLoading(false);
-        setRedeemCode(res.data.point);
-      } else {
-        setOpen(false);
-      }
-    });
-  };
+  
 
   console.log(expiryTime, "this is expiry");
   return (
